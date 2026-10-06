@@ -1,0 +1,17 @@
+---
+title: "Flutter UI micro-interactions that earn their keep"
+date: "2026-01-15"
+summary: "A short craft note on motion budgets: when a transition clarifies hierarchy, and when it is just noise."
+tags:
+  - Flutter
+  - UI
+  - Motion
+---
+
+Micro-interactions fail when they decorate instead of explain.
+
+On mobile, a good motion usually does one of three jobs: confirm an action, reveal hierarchy, or bridge a state change the user initiated. Everything else competes with content.
+
+In practice I keep a tight budget — often two or three intentional motions per surface — and I test them with reduced-motion preferences in mind. If the UI still reads without the animation, the motion is allowed to be delightful. If it does not, the interaction design is unfinished.
+
+This portfolio follows the same rule on the web: route enter, nav indicator, work reveal. No glow stacks. No motion for its own sake.

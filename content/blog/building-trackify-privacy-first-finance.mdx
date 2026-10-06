@@ -1,0 +1,17 @@
+---
+title: "Building Trackify: privacy-first finance on Flutter"
+date: "2025-11-01"
+summary: "Why Trackify starts local, encrypts by default, and treats cloud sync as an opt-in — not the center of the product."
+tags:
+  - Flutter
+  - Product
+  - Privacy
+---
+
+Most finance apps ask for an account before they earn trust. Trackify flips that order.
+
+The first version stores balances and transactions on-device with encryption. Charts stay fast because they read from a local model. Firestore sync exists, but it is optional — a continuity feature, not a gate.
+
+That decision shaped everything else: multi-method balances (cash vs digital), weekly trend views that stay readable, and an APK-first distribution path for people who want to try the product without a store account dance.
+
+If you are shipping a Flutter utility, start with the trust boundary. Local-first is not nostalgia — it is product clarity.
