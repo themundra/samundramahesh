@@ -1,41 +1,56 @@
 ---
 title: "Trackify"
-summary: "Privacy-first personal finance tracker with encrypted local storage, optional Firestore sync, and concise analytics."
+summary: "A comprehensive personal finance tracker built with Flutter — encrypted local storage, optional cloud sync, and clear data visualizations."
 role: "Primary developer — app, storage, analytics"
 stack:
   - Flutter
   - Dart
-  - Firestore
-  - Local encryption
-status: "Available for download (63.6 MB)"
+  - Hive
+  - Firebase
+status: "Available on Android"
 links:
-  - label: "Download APK (63.6 MB)"
-    href: "https://samundra.dronehospitalnepal.com/"
-cover: "/images/portfolio/trackify-cover.svg"
+  - label: "Download APK — Universal (63.6 MB)"
+    href: "https://samundra.dronehospitalnepal.com/Trackify%20Releases/app-release.apk"
+  - label: "Download APK — ARM64 (25.8 MB)"
+    href: "https://samundra.dronehospitalnepal.com/Trackify%20Releases/app-arm64-v8a-release.apk"
+cover: "/images/portfolio/trackify-cover.jpg"
 featured: true
 ---
 
 ## Overview
 
-Trackify is a privacy-first finance tracker I built with Flutter: encrypted local storage, optional Firestore sync, and concise analytics for weekly trends and category breakdowns.
+Trackify is a privacy-first personal finance tracker built with Flutter. It features encrypted local storage, optional cloud sync, and analytics for weekly trends and category breakdowns — with privacy and user experience as top priorities.
 
-I designed and shipped the product end-to-end — information architecture, UI, local persistence, sync paths, and the analytics surfaces that make weekly spending readable at a glance.
+I designed and shipped the product end-to-end: information architecture, UI, local persistence, sync paths, and the visualization surfaces that make spending readable at a glance.
 
 ## Problem
 
-Most finance apps push accounts to the cloud before they earn trust. I wanted a tool that starts local, keeps balances clear across cash and digital methods, and only syncs when the user chooses.
+Most finance apps push accounts to the cloud before they earn trust. Trackify starts local: balances stay clear across cash and digital methods, and sync is opt-in rather than the center of the product.
 
-## Approach
+## Product surfaces
 
-- **Encrypted local store** as the default source of truth
-- **Multi-method balances** so cash, bank, and wallets stay distinct
-- **Responsive charts** for weekly trends and category breakdowns
-- **Optional Firestore sync** for users who want cross-device continuity
+Core screens in a compact grid, then the remaining surfaces as annotated rows.
 
-## Role
+<ProductSurfaces preset="trackify" gridCount={3} />
 
-Primary developer — app architecture, storage layer, analytics UI, and release packaging for Android APK distribution.
+## Key features
 
-## Outcome
+- **Encrypted local storage** — financial data encrypted on-device with industry-standard protection
+- **Optional cloud sync** — Firebase when you want cross-device continuity, or fully local for maximum privacy
+- **Multi-method tracking** — cash, cards, digital wallets, and bank transfers
+- **Weekly analytics** — trend analysis with charts for spending patterns and categories
+- **Accessible interface** — built with accessibility best practices
+- **Category management** — custom categories with detailed breakdowns
 
-Trackify is available for download as a self-contained Flutter APK (~63.6 MB). The case study on this page preserves the public download path from the live portfolio.
+## Technology
+
+Flutter and Dart for the client, Hive for lightweight local storage, Firebase for optional sync and auth, AES-256 oriented encryption for data security, and FL Chart for visualization.
+
+## Downloads
+
+Android builds are published from the live case study:
+
+- **Universal** (~63.6 MB) — recommended for most devices (Android 5.0+)
+- **ARM64 split** (~25.8 MB) — optimized for modern 64-bit devices
+
+Use the download actions on this page for the current release files.

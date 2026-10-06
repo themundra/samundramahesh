@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { site } from "@/content/site";
 
 const NAV = [
   { href: "/", label: "Home" },
@@ -18,58 +18,62 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+function NavLink({
+  href,
+  label,
+  active,
+}: {
+  href: string;
+  label: string;
+  active: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`relative whitespace-nowrap py-1 text-[0.95rem] leading-none tracking-wide transition md:text-base ${
+        active ? "text-fg" : "text-muted hover:text-fg"
+      }`}
+    >
+      {label}
+      {active ? (
+        <motion.span
+          layoutId="nav-active"
+          className="absolute inset-x-0 -bottom-2 h-px bg-accent"
+          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+        />
+      ) : null}
+    </Link>
+  );
+}
+
+/** Desktop sticky header — hidden below md (mobile uses MobileTopBar). */
 export function SiteHeader() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
 
   return (
-    <header className="relative z-40 border-b border-line">
-      <div className="container-site flex items-center justify-between gap-4 py-4">
-        <Link
-          href="/"
-          className="font-display text-lg tracking-tight text-fg transition hover:text-accent"
-        >
-          Samundra Mahesh
+    <header className="sticky top-0 z-40 hidden border-b border-line bg-bg/70 backdrop-blur-md md:block">
+      <div className="container-site relative flex items-center justify-between gap-6 py-5">
+        <Link href="/" className="group flex shrink-0 flex-col justify-center gap-1">
+          <span className="font-display text-xl leading-none tracking-tight text-fg transition group-hover:text-accent">
+            {site.name}
+          </span>
+          <span className="font-mono-meta text-xs leading-none tracking-[0.14em] text-muted transition group-hover:text-fg/80">
+            {site.handle}
+          </span>
         </Link>
 
-        <button
-          type="button"
-          className="text-sm text-muted md:hidden"
-          aria-expanded={open}
-          aria-controls="site-nav"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? "Close" : "Menu"}
-        </button>
-
         <nav
-          id="site-nav"
-          className={`${
-            open ? "flex" : "hidden"
-          } absolute left-0 right-0 top-full flex-col gap-1 border-b border-line bg-bg px-5 py-4 md:static md:flex md:flex-row md:items-center md:gap-6 md:border-0 md:bg-transparent md:p-0`}
+          aria-label="Primary"
+          className="flex items-center gap-8 lg:gap-10"
         >
-          {NAV.map((item) => {
-            const active = isActive(pathname, item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className={`relative py-2 text-sm transition md:py-1 ${
-                  active ? "text-fg" : "text-muted hover:text-fg"
-                }`}
-              >
-                {item.label}
-                {active ? (
-                  <motion.span
-                    layoutId="nav-active"
-                    className="absolute inset-x-0 -bottom-0.5 h-px bg-accent md:-bottom-1"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                ) : null}
-              </Link>
-            );
-          })}
+          {NAV.map((item) => (
+            <NavLink
+              key={item.href}
+              href={item.href}
+              label={item.label}
+              active={isActive(pathname, item.href)}
+            />
+          ))}
         </nav>
       </div>
     </header>

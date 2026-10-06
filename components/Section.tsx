@@ -7,6 +7,8 @@ type SectionProps = {
   children?: ReactNode;
   className?: string;
   id?: string;
+  /** Soft top hairline divider (default on) */
+  divided?: boolean;
 };
 
 export function Section({
@@ -16,24 +18,34 @@ export function Section({
   children,
   className = "",
   id,
+  divided = true,
 }: SectionProps) {
   return (
-    <section id={id} className={`py-24 md:py-32 ${className}`}>
+    <section
+      id={id}
+      className={[
+        "py-10 md:py-16",
+        divided ? "section-divider" : "",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <div className="container-site">
         {eyebrow ? (
-          <p className="font-mono-meta mb-3 text-xs uppercase tracking-[0.18em] text-muted">
+          <p className="font-mono-meta mb-2 text-xs uppercase tracking-[0.18em] text-accent">
             {eyebrow}
           </p>
         ) : null}
-        <h2 className="font-display text-3xl tracking-tight text-fg md:text-4xl">
+        <h2 className="font-display text-2xl tracking-tight text-fg md:text-4xl">
           {headline}
         </h2>
         {support ? (
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
             {support}
           </p>
         ) : null}
-        {children ? <div className="mt-10">{children}</div> : null}
+        {children ? <div className="mt-7 md:mt-8">{children}</div> : null}
       </div>
     </section>
   );

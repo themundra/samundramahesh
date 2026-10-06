@@ -76,8 +76,11 @@ export function ContactForm() {
     }
   }
 
+  const fieldClass =
+    "mt-2 w-full rounded-sm border border-line bg-bg px-3 py-3 text-base text-fg";
+
   return (
-    <div className="rounded-sm border border-line bg-bg-elevated p-6 md:p-8">
+    <div className="rounded-sm border border-line bg-bg-elevated p-5 md:p-8">
       <form onSubmit={onSubmit} className="space-y-5" noValidate>
         <div>
           <label htmlFor="name" className="block text-sm text-fg">
@@ -87,7 +90,7 @@ export function ContactForm() {
             id="name"
             name="name"
             autoComplete="name"
-            className="mt-2 w-full rounded-sm border border-line bg-bg px-3 py-2 text-sm text-fg"
+            className={fieldClass}
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? "name-error" : undefined}
           />
@@ -106,7 +109,7 @@ export function ContactForm() {
             name="email"
             type="email"
             autoComplete="email"
-            className="mt-2 w-full rounded-sm border border-line bg-bg px-3 py-2 text-sm text-fg"
+            className={fieldClass}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "email-error" : undefined}
           />
@@ -128,7 +131,7 @@ export function ContactForm() {
             id="message"
             name="message"
             rows={5}
-            className="mt-2 w-full rounded-sm border border-line bg-bg px-3 py-2 text-sm text-fg"
+            className={fieldClass}
             aria-invalid={Boolean(errors.message)}
             aria-describedby={errors.message ? "message-error" : undefined}
           />
@@ -143,7 +146,7 @@ export function ContactForm() {
           ) : null}
         </div>
 
-        <Button type="submit" disabled={status === "loading"}>
+        <Button type="submit" disabled={status === "loading"} className="w-full sm:w-auto">
           {status === "loading" ? "Sending…" : "Send message"}
         </Button>
       </form>

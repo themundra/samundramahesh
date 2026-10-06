@@ -1,0 +1,17 @@
+---
+title: "Figma to production: handoff habits that survive launch"
+date: "2026-02-20"
+summary: "A short craft note on keeping design and build in the same conversation — tokens, critical paths, and handoffs that do not freeze into demos."
+tags:
+  - Design
+  - Flutter
+  - Process
+---
+
+Pretty Figma files are not a product. A handoff that survives launch is a shared language for structure, states, and what “done” means.
+
+I keep the critical path small: the one flow a user must complete without help. That path gets real spacing, real empty states, and real error copy in design — then the same names in code. Tokens come next: color, type scale, and motion budget written once so Flutter or web does not invent a second system.
+
+What I cut: orphaned variants, decorative motion that is not in the build, and documentation that describes a museum piece. What I keep: a short note on constraints (offline, privacy, content velocity) and a maintainable component map.
+
+If the next engineer cannot change a button without guessing, the handoff failed — even if the screenshots looked finished.

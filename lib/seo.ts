@@ -20,7 +20,7 @@ export function createMetadata({
 }): Metadata {
   const desc =
     description ??
-    "Flutter developer and UI/UX designer. Founder of Drone Hospital Nepal.";
+    "Website & app design, creative services, and founder of Drone Hospital Nepal.";
   const url = absoluteUrl(path);
 
   return {

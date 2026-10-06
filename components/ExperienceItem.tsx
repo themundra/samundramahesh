@@ -24,19 +24,30 @@ export function ExperienceItem({
           aria-expanded={open}
           aria-controls={panelId}
           onClick={onToggle}
-          className="flex w-full items-baseline justify-between gap-4 py-6 text-left"
+          className="flex min-h-14 w-full items-start justify-between gap-4 py-5 text-left md:items-baseline md:py-6"
         >
-          <span>
-            <span className="font-display block text-xl text-fg">
+          <span className="min-w-0">
+            <span className="font-display block text-lg text-fg md:text-xl">
               {item.role}
             </span>
             <span className="mt-1 block text-sm text-muted">
               {item.company}
               {item.location ? ` · ${item.location}` : ""}
             </span>
+            <span className="font-mono-meta mt-2 block text-xs text-muted md:hidden">
+              {item.period}
+            </span>
           </span>
-          <span className="font-mono-meta shrink-0 text-xs text-muted">
-            {item.period}
+          <span className="flex shrink-0 items-center gap-2">
+            <span className="font-mono-meta hidden text-xs text-muted md:inline">
+              {item.period}
+            </span>
+            <span
+              aria-hidden
+              className={`text-muted transition ${open ? "rotate-45" : ""}`}
+            >
+              +
+            </span>
           </span>
         </button>
       </h3>
@@ -45,7 +56,7 @@ export function ExperienceItem({
         role="region"
         aria-labelledby={buttonId}
         hidden={!open}
-        className="pb-8"
+        className="pb-6 md:pb-8"
       >
         <ul className="space-y-2">
           {item.bullets.map((b) => (

@@ -4,6 +4,11 @@ import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import type { ReactElement } from "react";
+import { ProductSurfaces } from "@/components/ProductSurfaces";
+
+const mdxComponents = {
+  ProductSurfaces,
+};
 
 export type PortfolioFrontmatter = {
   title: string;
@@ -47,6 +52,7 @@ export async function compileMdxContent(
 ): Promise<ReactElement> {
   const { content } = await compileMDX({
     source,
+    components: mdxComponents,
     options: {
       mdxOptions: {
         remarkPlugins: [remarkGfm],

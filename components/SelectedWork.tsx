@@ -1,22 +1,24 @@
 import { Section } from "@/components/Section";
-import { WorkRow } from "@/components/WorkRow";
+import { PortfolioScanStrip } from "@/components/PortfolioScanStrip";
+import { TextLink } from "@/components/TextLink";
 import { getFeaturedPortfolio, listPortfolio } from "@/lib/portfolio";
+import { home } from "@/content/home";
 
 export function SelectedWork() {
   const featured = getFeaturedPortfolio();
-  const projects = featured.length > 0 ? featured : listPortfolio().slice(0, 3);
+  const projects =
+    featured.length > 0 ? featured : listPortfolio().slice(0, 3);
 
   return (
     <Section
-      eyebrow="Selected work"
-      headline="Products worth opening"
-      support="Case studies first — Trackify in depth, then lighter project notes."
+      eyebrow={home.work.eyebrow}
+      headline={home.work.headline}
+      support={home.work.support}
     >
-      <div className="border-b border-line">
-        {projects.map((project) => (
-          <WorkRow key={project.slug} project={project} />
-        ))}
-      </div>
+      <PortfolioScanStrip projects={projects} variant="snap" />
+      <p className="mt-6 md:mt-8">
+        <TextLink href="/portfolio">All projects →</TextLink>
+      </p>
     </Section>
   );
 }
